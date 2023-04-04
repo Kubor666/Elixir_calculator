@@ -22,7 +22,19 @@ defmodule ElixirCalculator.Maths do
   defp display_result(result) do
     IO.puts("Your result is:")
     IO.puts(result)
-    continue()
+    same_number?(result)
+  end
+
+  defp same_number?(result) do
+    IO.puts("Would you like to use result number for further calculations ?")
+    number = IO.gets("1.Yes
+    2. No: ")
+
+    if number == "2\n" do
+      continue()
+    else
+      ElixirCalculator.mainmenu(result)
+    end
   end
 
   defp continue() do
