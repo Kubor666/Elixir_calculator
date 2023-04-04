@@ -4,7 +4,8 @@ defmodule ElixirCalculator do
     choice = IO.gets(" 1. Add
   2. Substract
   3. Multiplication
-  4. Division: ")
+  4. Division
+  5. Exit: ")
     choose_math(choice)
   end
 
@@ -14,14 +15,29 @@ defmodule ElixirCalculator do
     which_action(choice, x, y)
   end
 
-  defp which_action(choice, x, y) do
-    case choice do
-      "1\n" -> ElixirCalculator.Maths.add(x, y)
-      "2\n" -> ElixirCalculator.Maths.substract(x, y)
-      "3\n" -> ElixirCalculator.Maths.multi(x, y)
-      "4\n" -> ElixirCalculator.Maths.divide(x, y)
-      _ -> IO.puts("Please provide valid number of an option")
-    end
+  defp which_action("1\n", x, y) do
+    ElixirCalculator.Maths.add(x, y)
+  end
+
+  defp which_action("2\n", x, y) do
+    ElixirCalculator.Maths.substract(x, y)
+  end
+
+  defp which_action("3\n", x, y) do
+    ElixirCalculator.Maths.multi(x, y)
+  end
+
+  defp which_action("4\n", x, y) do
+    ElixirCalculator.Maths.divide(x, y)
+  end
+
+  defp which_action("5\n", x, y) do
+    System.stop(0)
+  end
+
+  defp which_action(_choice, x, y) do
+    IO.puts("Please provide valid option!")
+    ElixirCalculator.mainmenu()
   end
 
   defp ask_for_number() do
