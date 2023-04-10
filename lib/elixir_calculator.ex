@@ -20,51 +20,13 @@ defmodule ElixirCalculator do
   end
 
   def choose_math(choice) do
-    x = ask_for_number()
-    y = ask_for_number()
-    which_action(choice, x, y)
+    x = ElixirCalculator.Logic.ask_for_number()
+    y = ElixirCalculator.Logic.ask_for_number()
+    ElixirCalculator.Logic.which_action(choice, x, y)
   end
 
   def choose_math(choice, x) do
-    y = ask_for_number()
-    which_action(choice, x, y)
-  end
-
-  defp which_action("1\n", x, y) do
-    ElixirCalculator.Maths.add(x, y)
-  end
-
-  defp which_action("2\n", x, y) do
-    ElixirCalculator.Maths.substract(x, y)
-  end
-
-  defp which_action("3\n", x, y) do
-    ElixirCalculator.Maths.multi(x, y)
-  end
-
-  defp which_action("4\n", x, y) do
-    ElixirCalculator.Maths.divide(x, y)
-  end
-
-  defp which_action("5\n", x, y) do
-    System.stop(0)
-  end
-
-  defp which_action(_choice, x, y) do
-    IO.puts("Please provide valid option!")
-    ElixirCalculator.mainmenu()
-  end
-
-  defp ask_for_number() do
-    z =
-      IO.gets("Provide a number ")
-      |> Float.parse()
-
-    if z == :error do
-      IO.puts("Wrong value type!")
-      ask_for_number()
-    else
-      elem(z, 0)
-    end
+    y = ElixirCalculator.Logic.ask_for_number()
+    ElixirCalculator.Logic.which_action(choice, x, y)
   end
 end
