@@ -30,11 +30,20 @@ defmodule ElixirCalculator.Maths do
     number = IO.gets("1.Yes
     2. No: ")
 
-    if number == "2\n" do
-      continue()
-    else
-      ElixirCalculator.mainmenu(result)
-    end
+    selected_number(number, result)
+  end
+
+  defp selected_number("1\n", result) do
+    ElixirCalculator.mainmenu(result)
+  end
+
+  defp selected_number("2\n", result) do
+    continue()
+  end
+
+  defp selected_number(_number, result) do
+    IO.puts("Please provide valid option!")
+    same_number?(result)
   end
 
   defp continue() do
